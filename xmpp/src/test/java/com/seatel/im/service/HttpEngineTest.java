@@ -1,5 +1,9 @@
 package com.seatel.im.service;
 
+import com.seatel.im.model.LoginResult;
+import com.seatel.im.model.MucInfo;
+import com.seatel.im.model.Result;
+import com.seatel.im.model.UserInfo;
 import com.seatel.im.service.http.HttpEngine;
 
 import org.junit.Test;

@@ -1,9 +1,9 @@
 package com.seatel.im.service.http;
 
-import com.seatel.im.service.LoginResult;
-import com.seatel.im.service.MucInfo;
-import com.seatel.im.service.Result;
-import com.seatel.im.service.UserInfo;
+import com.seatel.im.model.LoginResult;
+import com.seatel.im.model.MucInfo;
+import com.seatel.im.model.Result;
+import com.seatel.im.model.UserInfo;
 
 import java.util.List;
 

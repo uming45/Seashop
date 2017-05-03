@@ -1,5 +1,7 @@
 package com.seatel.im.service;
 
+import com.seatel.im.model.MucInfo;
+
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;

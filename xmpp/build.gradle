@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 25
@@ -45,8 +46,13 @@ dependencies {
     compile "org.igniterealtime.smack:smack-tcp:4.2.0"
     compile 'com.squareup.retrofit2:retrofit:2.2.0'
     compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+    compile 'org.greenrobot:greendao:3.2.2'
 
     testCompile 'org.mockito:mockito-core:2.7.22'
     androidTestCompile 'org.mockito:mockito-android:2.7.22'
     provided "org.projectlombok:lombok:1.12.6"
+}
+
+greendao {
+    schemaVersion 2
 }

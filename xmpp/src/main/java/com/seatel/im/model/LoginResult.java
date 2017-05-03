@@ -1,4 +1,4 @@
-package com.seatel.im.service;
+package com.seatel.im.model;
 
 /**
  * Created by eldorado on 17-5-3.

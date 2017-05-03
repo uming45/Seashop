@@ -3,6 +3,7 @@ package com.seatel.im;
 import android.content.Context;
 
 import com.seatel.im.conn.ConnectionManager;
+import com.seatel.im.service.db.DbManager;
 
 /**
  * Created by eldorado on 17-4-27.
@@ -16,6 +17,7 @@ public class ImModule {
 
     public static void init(Context context) {
         sContext = context;
+        DbManager.init(context);
     }
 
     public static Context getContext() {
