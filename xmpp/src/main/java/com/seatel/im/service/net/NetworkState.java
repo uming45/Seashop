@@ -1,4 +1,4 @@
-package com.seatel.im.net;
+package com.seatel.im.service.net;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

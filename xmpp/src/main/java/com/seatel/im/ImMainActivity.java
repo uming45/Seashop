@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.seatel.im.conn.ConnectionManager;
-import com.seatel.im.net.NetworkState;
+import com.seatel.im.service.net.NetworkState;
 import com.seatel.im.ui.widget.NetFailBar;
 
 import org.jivesoftware.smack.chat2.Chat;

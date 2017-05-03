@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.seatel.im.executor.Executor;
-import com.seatel.im.net.NetworkState;
+import com.seatel.im.service.net.NetworkState;
 import com.seatel.im.util.RegexUtils;
 
 import org.jivesoftware.smack.AbstractConnectionListener;

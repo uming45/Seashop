@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 25
@@ -12,8 +12,15 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        multiDexEnabled  true
+        multiDexEnabled true
+
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 
     buildTypes {
         release {
@@ -21,6 +28,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
 }
 
 dependencies {
@@ -34,7 +43,10 @@ dependencies {
     compile "org.igniterealtime.smack:smack-android-extensions:4.2.0"
     compile "org.igniterealtime.smack:smack-experimental:4.2.0"
     compile "org.igniterealtime.smack:smack-tcp:4.2.0"
+    compile 'com.squareup.retrofit2:retrofit:2.2.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
 
     testCompile 'org.mockito:mockito-core:2.7.22'
     androidTestCompile 'org.mockito:mockito-android:2.7.22'
+    provided "org.projectlombok:lombok:1.12.6"
 }
