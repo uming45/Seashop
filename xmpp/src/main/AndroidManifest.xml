@@ -1,12 +1,24 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.seatelgroup.xmpp">
+          package="com.seatel.im">
+
+    <uses-sdk android:minSdkVersion="15"
+              android:targetSdkVersion="25"
+              android:maxSdkVersion="25" />
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application android:allowBackup="true"
                  android:label="@string/app_name"
                  android:supportsRtl="true"
     >
+
+        <activity
+            android:launchMode="singleTop"
+            android:label="im_entry_activity"
+            android:name="com.seatel.im.ImMainActivity">
+
+        </activity>
 
     </application>
 
