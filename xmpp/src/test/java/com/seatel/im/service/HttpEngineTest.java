@@ -10,20 +10,14 @@ import org.junit.Test;
 
 import java.util.List;
 
-import retrofit2.*;
+import retrofit2.Call;
 import retrofit2.Callback;
-
-import static junit.framework.Assert.*;
+import retrofit2.Response;
 
 /**
  * Created by eldorado on 17-5-3.
  */
 public class HttpEngineTest {
-    @Test
-    public void getInstance() throws Exception {
-        assertNotNull(HttpEngine.getInstance());
-    }
-
     @Test
     public void login() throws Exception {
         HttpEngine.post().login("0189404529", "e10adc3949ba59abbe56e057f20f883e").enqueue(new Callback<Result<LoginResult>>() {

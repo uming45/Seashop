@@ -15,12 +15,12 @@ import com.seatel.im.model.DaoSession;
  */
 public class DbManager {
     private final static String TAG = DbManager.class.getSimpleName();
-    private static DaoMaster.DevOpenHelper sHelper;
+    private static DaoMaster.OpenHelper sHelper;
     private static SQLiteDatabase sDatabase;
     private static DaoMaster sDaoMaster;
 
     public static void init(Context context) {
-        sHelper =  new DaoMaster.DevOpenHelper(context, "im-db");
+        sHelper =  new OpenHelperImpl(context, "im-db");
         sDatabase = sHelper.getWritableDatabase();
         sDaoMaster = new DaoMaster(sDatabase);
     }

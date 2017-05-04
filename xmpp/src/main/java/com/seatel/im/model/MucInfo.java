@@ -25,10 +25,11 @@ public class MucInfo {
     private int maxUserSize;
     private long createTime;
     private long modifyTime;
-    @Generated(hash = 240413196)
+    private String subject; // APPEND FIELD
+    @Generated(hash = 924922368)
     public MucInfo(String id, String jid, String name, String nickname,
             String userId, int userSize, String desc, int maxUserSize,
-            long createTime, long modifyTime) {
+            long createTime, long modifyTime, String subject) {
         this.id = id;
         this.jid = jid;
         this.name = name;
@@ -39,6 +40,7 @@ public class MucInfo {
         this.maxUserSize = maxUserSize;
         this.createTime = createTime;
         this.modifyTime = modifyTime;
+        this.subject = subject;
     }
     @Generated(hash = 1873052311)
     public MucInfo() {
@@ -102,5 +104,11 @@ public class MucInfo {
     }
     public void setModifyTime(long modifyTime) {
         this.modifyTime = modifyTime;
+    }
+    public String getSubject() {
+        return this.subject;
+    }
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 }

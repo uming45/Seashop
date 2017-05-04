@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Seashop.iml" filepath="$PROJECT_DIR$/Seashop.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rxhelper/rxhelper.iml" filepath="$PROJECT_DIR$/rxhelper/rxhelper.iml" />
       <module fileurl="file://$PROJECT_DIR$/xmpp/xmpp.iml" filepath="$PROJECT_DIR$/xmpp/xmpp.iml" />
     </modules>
   </component>

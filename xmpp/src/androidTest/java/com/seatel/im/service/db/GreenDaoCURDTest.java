@@ -24,21 +24,47 @@ import static junit.framework.Assert.assertTrue;
  * 后续的测试可以直接使用Mockito做一依赖模拟
  *
  * 遗留问题：
- * 1. 嵌套数据的支持
+ * 1. 嵌套数据的支持 不是一种好的设计方式，考虑存在多张表当中
+ *
  * 2. 数据库ddl语句的支持 升级： DevOpenHelper.onUpgrade
+ *    a. 重写DaoMaster.OpenHelper#onCreate & onUpgrade {@link OpenHelperImpl}
+ *    b. 修改Entity实体类，对应在OpenHelper手动添加DDL语句
+ *    c. 在build.gradle[module]中修改schemaVersion
+ *
  * 3. 对Rx风格的支持
  * 4. 架构的原理
  */
-public class DbManagerTest {
+public class GreenDaoCURDTest {
     private Context mContext;
     private MucInfoDao mMucInfoDao;
+
+    /*************  append a field to MucInfo  **************
+        android.database.sqlite.SQLiteException: table MUC_INFO has no column named SUBJECT (code 1): ,
+              while compiling: INSERT INTO "MUC_INFO" (...,"SUBJECT") VALUES (...,?)
+
+        at android.database.sqlite.SQLiteConnection.nativePrepareStatement(Native Method)
+        at android.database.sqlite.SQLiteConnection.acquirePreparedStatement(SQLiteConnection.java:896)
+        at android.database.sqlite.SQLiteConnection.prepare(SQLiteConnection.java:507)
+        at android.database.sqlite.SQLiteSession.prepare(SQLiteSession.java:588)
+        at android.database.sqlite.SQLiteProgram.<init>(SQLiteProgram.java:58)
+        at android.database.sqlite.SQLiteStatement.<init>(SQLiteStatement.java:31)
+        at android.database.sqlite.SQLiteDatabase.compileStatement(SQLiteDatabase.java:1024)
+
+        at org.greenrobot.greendao.database.StandardDatabase.compileStatement(StandardDatabase.java:67)
+        at org.greenrobot.greendao.internal.TableStatements.getInsertStatement(TableStatements.java:52)
+        at org.greenrobot.greendao.AbstractDao.insert(AbstractDao.java:319)
+
+        at com.seatel.im.service.db.GreenDaoCURDTest.insertTestData(GreenDaoCURDTest.java:113)
+        at com.seatel.im.service.db.GreenDaoCURDTest.setup(GreenDaoCURDTest.java:41)
+     */
 
     @Before
     public void setup() {
         mContext = InstrumentationRegistry.getContext();
         DbManager.init(mContext);
         mMucInfoDao = DbManager.getSession().getMucInfoDao();
-        insertTestData();
+        mMucInfoDao.deleteAll();
+        GreendDaoUtils.insertTestData(mMucInfoDao);
     }
 
     @Test
@@ -82,6 +108,22 @@ public class DbManagerTest {
                 .unique()
                 .getId();
         assertEquals("19", id);
+
+        assertEquals(10, mMucInfoDao.count());
+    }
+
+    // 数据库更新测试
+    @Test
+    public void upgrade() {
+        // APPENDED FIELD: subject
+        MucInfo mucInfo5 = mMucInfoDao.queryBuilder()
+                .where(MucInfoDao.Properties.Id.eq(5))
+                .build()
+                .unique();
+
+        System.out.println(mucInfo5.getSubject());
+
+        mucInfo5.setSubject("subject5");
     }
 
     @After
@@ -90,14 +132,4 @@ public class DbManagerTest {
         assertTrue(mMucInfoDao.count() == 0);
     }
 
-    private void insertTestData() {
-        for (int i = 1; i <= 10; i++) {
-            MucInfo mucInfo = new MucInfo();
-            mucInfo.setId("" + i);
-            mucInfo.setName("name:" + i);
-            mucInfo.setUserId("userid:" + i);
-
-            mMucInfoDao.insert(mucInfo);
-        }
-    }
 }
