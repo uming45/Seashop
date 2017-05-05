@@ -39,6 +39,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.android.support:recyclerview-v7:25.1.0'
     testCompile 'junit:junit:4.12'
 
     compile "org.igniterealtime.smack:smack-android-extensions:4.2.0"
@@ -51,8 +52,11 @@ dependencies {
     testCompile 'org.mockito:mockito-core:2.7.22'
     androidTestCompile 'org.mockito:mockito-android:2.7.22'
     provided "org.projectlombok:lombok:1.12.6"
+    annotationProcessor "org.androidannotations:androidannotations:4.3.0"
+    compile "org.androidannotations:androidannotations-api:4.3.0"
 
     compile group: 'io.reactivex', name: 'rxjava', version: '1.0.14'
+
 }
 
 greendao {

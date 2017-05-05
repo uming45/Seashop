@@ -1,5 +1,6 @@
 package com.seatel.im;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -10,8 +11,11 @@ import android.widget.Toast;
 
 import com.seatel.im.conn.ConnectionManager;
 import com.seatel.im.service.net.NetworkState;
+import com.seatel.im.ui.activity.list.MucListActivity;
 import com.seatel.im.ui.widget.NetFailBar;
 
+import org.androidannotations.annotations.Click;
+import org.androidannotations.annotations.EActivity;
 import org.jivesoftware.smack.chat2.Chat;
 import org.jivesoftware.smack.chat2.IncomingChatMessageListener;
 import org.jivesoftware.smack.packet.Message;
@@ -20,6 +24,7 @@ import org.jivesoftware.smackx.receipts.ReceiptReceivedListener;
 import org.jxmpp.jid.EntityBareJid;
 import org.jxmpp.jid.Jid;
 
+@EActivity(resName = "activity_main")
 public class ImMainActivity extends AppCompatActivity implements IncomingChatMessageListener, ReceiptReceivedListener {
 
     private EditText textEt;
@@ -31,7 +36,7 @@ public class ImMainActivity extends AppCompatActivity implements IncomingChatMes
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
 
         initView();
     }
@@ -126,4 +131,9 @@ public class ImMainActivity extends AppCompatActivity implements IncomingChatMes
                 "," + receiptId + ", " + receipt);
     }
 
+    @Click(resName = "muc_list_btn")
+    public void mucList() {
+        Intent intent = new Intent(this, MucListActivity.class);
+        startActivity(intent);
+    }
 }

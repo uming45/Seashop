@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="58dp"
+    android:background="@color/accent"
+    android:padding="5dp"
+ >
+
+    <ImageView
+        android:id="@+id/listcell_muc_avatar_iv"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/circle_black_48dp"/>
+
+    <LinearLayout
+        android:layout_toRightOf="@+id/listcell_muc_avatar_iv"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="4"
+        android:paddingTop="5dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:id="@+id/listcell_muc_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:lines="1"
+            android:text="listcell_muc_title"
+            android:textColor="@color/black"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/listcell_muc_recent_msg_tv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="寻山: 有志者，事竟成!天行键，君子自强不息。"
+            android:textSize="12sp"/>
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/listcell_muc_tool_iv"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/circle_black_24dp"/>
+
+</RelativeLayout>

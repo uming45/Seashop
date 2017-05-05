@@ -58,4 +58,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="disconnect"/>
+
+    <Button
+        android:onClick="mucList"
+        android:id="@+id/muc_list_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="muc list"/>
 </LinearLayout>
