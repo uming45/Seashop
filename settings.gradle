@@ -1,1 +1,1 @@
-include ':app', ':xmpp', ':rxhelper'
+include ':app', ':xmpp', ':rxhelper', ':ui'
